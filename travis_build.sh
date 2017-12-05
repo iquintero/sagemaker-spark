@@ -1,13 +1,15 @@
 #!/bin/sh
 
-SBT_LOCATION="https://raw.githubusercontent.com/paulp/sbt-extras/master/sbt"
+SBT_LOCATION="https://github.com/sbt/sbt/releases/download/v1.0.3/sbt-1.0.3.tgz"
+
 wget $SBT_LOCATION
-export PATH=$PATH:`pwd`
+tar -xf sbt-1.0.3.tgz
+export PATH=`pwd`/sbt/bin/:$PATH
+which sbt
+echo $PATH
 
+ls -l
 # build scala first
-cd sagemaker-spark-sdk
+pushd sagemaker-spark-sdk
 sbt test package
-
-# test pyspark
-cd ../sagemaker-pyspark-sdk
-tox
+popd
