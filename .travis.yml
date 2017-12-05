@@ -6,9 +6,8 @@ python:
 env:
 - AWS_REGION=us-west-2
 install:
-- pip install --user tox-travis
+- pip install tox-travis
 before_script:
 - cd sagemaker-pyspark-sdk
 script:
-- tox
-
+- ./travis_build.sh
